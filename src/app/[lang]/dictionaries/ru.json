@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Главная"
+  },
+  "KeysPage": {
+    "title": "Ключи"
+  },
+  "HistoryPage": {
+    "title": "История"
+  },
+  "Products": {
+    "cart": "Добавить в корзину"
+  }
+}

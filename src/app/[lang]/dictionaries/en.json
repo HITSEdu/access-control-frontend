@@ -1,0 +1,14 @@
+{
+  "HomePage": {
+    "title": "Home"
+  },
+  "KeysPage": {
+    "title": "Keys"
+  },
+  "HistoryPage": {
+    "title": "History"
+  },
+  "Products": {
+    "cart": "Add to Cart"
+  }
+}
