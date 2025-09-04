@@ -6,9 +6,15 @@ const locales = ['en', 'ru']
 const defaultLocale = 'en'
 
 function getLocale(request: NextRequest): string {
-  const headers = Object.fromEntries(request.headers.entries())
-  const languages = new Negotiator({ headers }).languages()
-  return match(languages, locales, defaultLocale)
+  try {
+    const headers = Object.fromEntries(request.headers.entries())
+    const languages = new Negotiator({ headers }).languages()
+
+    const baseLanguages = languages.map(l => l.split('-')[0])
+    return match(baseLanguages, locales, defaultLocale)
+  } catch (e) {
+    return 'en'
+  }
 }
 
 export function middleware(request: NextRequest) {

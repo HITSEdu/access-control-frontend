@@ -3,10 +3,20 @@
     "title": "Home"
   },
   "KeysPage": {
-    "title": "Keys"
+    "title": "Keys",
+    "created": "Key created!",
+    "createdError": "Key creation error!",
+    "deleted": "Key deleted!",
+    "deletedError": "Key deletion error!",
+    "addButton": "Create key",
+    "adding": "Creating...",
+    "noKeys": "There are no keys yet...",
+    "keysError": "Key loading error!"
   },
   "HistoryPage": {
-    "title": "History"
+    "title": "History",
+    "noHistory": "There are no history yet...",
+    "historyError": "History loading error!"
   },
   "Products": {
     "cart": "Add to Cart"

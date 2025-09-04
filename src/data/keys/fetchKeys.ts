@@ -1,16 +1,31 @@
+import { API_URL } from '@/actions/config'
 import 'server-only'
+import { StateType, KeyType } from '@/types/state.type'
 
-import { cache } from 'react'
+export const fetchKeys = async (): Promise<StateType<KeyType[]>> => {
+  try {
+    const response = await fetch(`${API_URL}/keys`, {
+      method: 'GET',
+      cache: 'no-store',
+    })
 
-export const fetchKeys = cache(async () => {
-  const response = await fetch(`${API_URL}/keys`, {
-    method: 'GET',
-    cache: 'no-store',
-  })
+    if (!response.ok) {
+      return {
+        status: 'error',
+        data: null,
+      }
+    }
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch keys')
+    const keys: KeyType[] = await response.json()
+
+    return {
+      status: 'success',
+      data: keys,
+    }
+  } catch (error) {
+    return {
+      status: 'error',
+      data: null,
+    }
   }
-
-  return response.json()
-})
+}

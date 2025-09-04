@@ -5,6 +5,7 @@ import ThemeProvider from '@/app/_components/providers/ThemeProvider'
 import Header from '@/app/_components/Header'
 import { ReactNode } from 'react'
 import { SiteLanguage } from '@/app/config/site.config'
+import { Toaster } from '@/components/ui/sonner'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -42,8 +43,13 @@ export default async function RootLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <Header />
+      <Header params={params} />
       {children}
+      <Toaster
+        richColors={true}
+        closeButton={true}
+        position="top-right"
+      />
     </ThemeProvider>
     </body>
     </html>

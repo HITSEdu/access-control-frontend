@@ -1,16 +1,9 @@
 import { getDictionary } from './dictionaries'
-import { SiteLanguage } from '@/app/config/site.config'
+import { LanguageParams } from '@/app/config/site.config'
 
-export type LanguageProps = {
-  params: { lang: SiteLanguage }
-}
+export default async function Page({ params }: LanguageParams) {
+  const { lang } = await params
+  const dict = await getDictionary(lang)
 
-export default async function Home({ params }: LanguageProps) {
-  const dict = await getDictionary(params.lang)
-
-  return (
-    <div>
-      <h1>{dict.HomePage.title}</h1>
-    </div>
-  )
+  return <h1>{dict.HomePage.title}</h1>
 }

@@ -7,3 +7,7 @@ export const sitePages = {
 } as const
 
 export type SitePageKey = keyof typeof sitePages
+
+export type LanguageParams = {
+  params: Promise<{ lang: SiteLanguage }>
+}
