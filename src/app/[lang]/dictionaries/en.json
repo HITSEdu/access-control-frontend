@@ -1,6 +1,23 @@
 {
   "HomePage": {
-    "title": "Home"
+    "title": "INFOTEKS",
+    "subtitle": "Access control security system development",
+    "goalTitle": "Goal",
+    "goalDesc": "Create an access control system with cryptographic protection to prevent bypassing and forgery.",
+    "contextTitle": "Context",
+    "contextDesc": "The system uses a card with a code (key) implemented as an app, sound, or other format. The controller verifies the key and decides on access.",
+    "mvpTitle": "MVP Requirements",
+    "mvp1": "Card emulator generating one-time password",
+    "mvp2": "Controller emulator validating the code",
+    "mvp3": "Cross-platform support (embedded systems)",
+    "extraTitle": "Additional Tasks",
+    "extra1": "Simple user administration",
+    "extra2": "Minimization of secret leakage",
+    "extra3": "Password lifetime management",
+    "extra4": "System autonomy",
+    "stackTitle": "Tech Stack",
+    "stack1": "Programming languages (optimal)",
+    "stack2": "OpenSSL (cryptography)"
   },
   "KeysPage": {
     "title": "Keys",
@@ -11,14 +28,39 @@
     "addButton": "Create key",
     "adding": "Creating...",
     "noKeys": "There are no keys yet...",
-    "keysError": "Key loading error!"
+    "keysError": "Key loading error!",
+    "keyTitle": "Key",
+    "generatedAt": "Created",
+    "copy": "Copy",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "copied": "Copied!",
+    "copyError": "Copy Error!"
+
   },
   "HistoryPage": {
     "title": "History",
     "noHistory": "There are no history yet...",
-    "historyError": "History loading error!"
+    "historyError": "History loading error!",
+    "lock": "Lock",
+    "success": "Success",
+    "failed": "Failed",
+    "denied": "Denied",
+    "operation": "Operation",
+    "key": "Key"
   },
-  "Products": {
-    "cart": "Add to Cart"
+  "LocksPage": {
+    "title": "Locks",
+    "noLocks": "There are no locks yet...",
+    "locksError": "Locks loading error!"
+  },
+  "Theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "Header": {
+    "open": "Open menu"
   }
 }

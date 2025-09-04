@@ -20,6 +20,23 @@ function getLocale(request: NextRequest): string {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.startsWith('/apple-icon.png') ||
+    pathname.startsWith('/icon0.svg') ||
+    pathname.startsWith('/icon1.png') ||
+    pathname.startsWith('/web-app-manifest') ||
+    pathname.includes('.png') ||
+    pathname.includes('.svg') ||
+    pathname.includes('.ico') ||
+    pathname.includes('.css') ||
+    pathname.includes('.js') ||
+    pathname.includes('.ts')
+  ) {
+    return
+  }
+
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )

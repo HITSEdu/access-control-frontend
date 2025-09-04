@@ -1,4 +1,5 @@
 import { fetchHistory } from '@/data/history/fetchHistory'
+import HistoryItem from './HistoryItem'
 
 export default async function HistoryList({ dict }: any) {
   const { status, data } = await fetchHistory()
@@ -12,20 +13,13 @@ export default async function HistoryList({ dict }: any) {
   }
 
   return (
-    <div className="flex flex-col gap-2 max-w-md">
+    <div className="grid gap-4 max-w-md">
       {data.map((history) => (
-        <div
+        <HistoryItem
           key={history.id}
-          className="rounded-md border px-4 py-2 shadow-sm"
-        >
-          <p className="font-medium">{history.status}</p>
-          <p className="text-sm text-gray-500">
-            {history.key_id}
-          </p>
-          <p className="text-sm text-gray-500">
-            {history.lock_id}
-          </p>
-        </div>
+          item={history}
+          dict={dict}
+        />
       ))}
     </div>
   )

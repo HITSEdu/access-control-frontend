@@ -27,7 +27,7 @@ export async function createKey(
 }
 
 export async function deleteKey(
-  id: number,
+  id: string,
   _prevState: StateType
 ): Promise<StateType> {
   try {

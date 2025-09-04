@@ -1,24 +1,24 @@
-import AddKeyForm from '@/app/[lang]/keys/_components/AddKeyForm'
-import KeyList from '@/app/[lang]/keys/_components/KeyList'
 import { LanguageParams } from '@/app/config/site.config'
 import { getDictionary } from '@/app/[lang]/dictionaries'
+import HistoryList from '@/app/[lang]/history/_components/HistoryList'
 import { Suspense } from 'react'
 import SkeletonCard from '@/app/_components/LoadingSkeleton'
 import { Metadata } from 'next'
+import LocksList from '@/app/[lang]/locks/_components/LocksList'
 
 export const metadata: Metadata = {
-  title: 'Keys',
+  title: 'Locks',
 }
 
-export default async function KeysPage({ params }: LanguageParams) {
+export default async function LocksPage({ params }: LanguageParams) {
   const { lang } = await params
   const dict = await getDictionary(lang)
 
   return (
     <div className="flex flex-col items-center mt-4 gap-4 mx-2">
-      <AddKeyForm dict={dict} />
+      {dict.LocksPage.title}
       <Suspense fallback={<SkeletonCard />}>
-        <KeyList dict={dict} />
+        <LocksList dict={dict} />
       </Suspense>
     </div>
   )

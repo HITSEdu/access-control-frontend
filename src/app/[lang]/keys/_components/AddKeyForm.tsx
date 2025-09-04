@@ -6,7 +6,6 @@ import { toast } from 'sonner'
 import { createKey } from '@/actions/keys'
 
 export default function AddKeyForm({ dict }: any) {
-
   const [state, action, pending] = useActionState(createKey, {})
 
   useEffect(() => {

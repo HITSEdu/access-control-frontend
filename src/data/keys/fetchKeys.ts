@@ -3,6 +3,17 @@ import 'server-only'
 import { StateType, KeyType } from '@/types/state.type'
 
 export const fetchKeys = async (): Promise<StateType<KeyType[]>> => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(() => resolve({
+      status: 'success',
+      data: [{
+        id: '123-213-dfa',
+        seed: 'dasdasdasdasda',
+        time: 2134214141
+      }]
+    }), 400)
+  })
+
   try {
     const response = await fetch(`${API_URL}/keys`, {
       method: 'GET',
