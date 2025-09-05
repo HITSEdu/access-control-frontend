@@ -1,36 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Access Control — фронтенд
 
-## Getting Started
+## Эталонный фронтенд для кейса ИНФОТЕКС: «Система безопасности управления доступом».
+### Проект демонстрирует пользовательские интерфейсы для работы с ключами, замками и историей событий, поддерживает локализацию и переключение темы, и готов к встраиванию в «тонкие» клиента/панель администратора.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Возможности
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Главная — обзор системы, статус демо-окружения, ссылки на разделы.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Ключи (/keys) — список всех ключей (карточек/токенов) с поиском и фильтрами.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* Детальная по ключу (/keys/[id]) — динамический роут для просмотра/эмуляции OTP и метаданных.
 
-## Learn More
+* История (/history) — события доступа (успешные/отклонённые попытки, блокировки).
 
-To learn more about Next.js, take a look at the following resources:
+* Замки (/locks) — перечень контроллеров/точек доступа, их состояние и привязанные политики.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Локализация — автоматический подбор языка + ручное переключение.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Тёмная/светлая тема — хранение предпочтения пользователя, системные настройки.
 
-## Deploy on Vercel
+* Встраиваемость — лёгкие компоненты, чистый React 19 + Next.js 15, минимальные зависимости.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* UX-мелочи — уведомления (sonner), иконки (lucide), доступность (Radix UI).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* ⚠️ Криптография и проверка OTP/подписей в этом репозитории не реализуются во фронте. Здесь — только UI и эмуляция. Реальная проверка ключей должна выполняться на контроллере/сервере (см. раздел «Интеграция»).
+
+---
+
+## 🧰 Технологии
+
+* Next.js 15.5.2 (App Router, Turbopack)
+
+* React 19
+
+* Tailwind CSS v4 (utility-first стили)
+
+* next-themes — темы
+
+* Radix UI — примитивы UI
+
+* lucide-react — иконки
+
+* sonner — уведомления/toasts
+
+* zod — валидация форм/DTO
+
+* @formatjs/intl-localematcher + negotiator — i18n авто-детект
+
+* Biome — линт/формат
+
+---
+
+## 📦 Скрипты
+````
+pnpm dev      # запуск в dev-режиме (Turbopack)
+pnpm build    # сборка (Turbopack)
+pnpm start    # прод-старт
+pnpm lint     # проверка Biome
+pnpm format   # автоформат Biome
+````
+
+Проект также работает с npm/yarn, но рекомендуем pnpm для скорости и детерминизма.
+
+---
+
+## 🌐 Локализация
+
+Поддерживаются, например, en и ru (расширяемо).
+Автоопределение языка — через заголовки Accept-Language (Negotiator + Intl Locale Matcher).
+Ручной выбор — в шапке приложения.
+
+Структура словарей (пример):
+
+````
+/app
+    /[lang]
+        /dictionaries
+            en.json
+            ru.json
+````
+
+---
