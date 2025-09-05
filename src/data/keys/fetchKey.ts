@@ -1,8 +1,16 @@
 import { API_URL } from '@/actions/config'
 import 'server-only'
 import { StateType, KeyType } from '@/types/state.type'
+import { mockKeys } from '@/data/mockdata'
 
 export const fetchKey = async (id: string): Promise<StateType<KeyType>> => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(() => resolve({
+      status: 'success',
+      data: mockKeys.find(k => k.id === id)
+    }), 400)
+  })
+
   try {
     const response = await fetch(`${API_URL}/keys${id}`, {
       method: 'GET',

@@ -14,14 +14,15 @@ import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
 import { useActionState, useEffect } from 'react'
 import { deleteKey } from '@/actions/keys'
-import { Copy, Trash2 } from 'lucide-react'
+import { Copy, Trash2, LockOpen } from 'lucide-react'
 
 type Props = {
   item: KeyType
   dict: any
+  mode?: 'list' | 'details'
 }
 
-export default function KeyItem({ item, dict }: Props) {
+export default function KeyItem({ item, dict, mode = 'list' }: Props) {
   const [state, action, pending] = useActionState(deleteKey.bind(null, item.id), {})
 
   useEffect(() => {
@@ -79,17 +80,28 @@ export default function KeyItem({ item, dict }: Props) {
           {dict.KeysPage.copy}
         </Button>
 
-        <form action={action}>
+        {mode === 'list' ? (
+          <form action={action}>
+            <Button
+              variant="destructive"
+              size="sm"
+              disabled={pending}
+              type="submit"
+            >
+              <Trash2 className="h-4 w-4 mr-1" />
+              {pending ? dict.KeysPage.deleting : dict.KeysPage.delete}
+            </Button>
+          </form>
+        ) : (
           <Button
-            variant="destructive"
+            variant="secondary"
             size="sm"
-            disabled={pending}
-            type="submit"
+            onClick={() => toast.info(dict.KeysPage.detachInfo)}
           >
-            <Trash2 className="h-4 w-4 mr-1" />
-            {pending ? dict.KeysPage.deleting : dict.KeysPage.delete}
+            <LockOpen className="h-4 w-4 mr-1" />
+            {dict.KeysPage.detachFromLock}
           </Button>
-        </form>
+        )}
       </CardFooter>
     </Card>
   )

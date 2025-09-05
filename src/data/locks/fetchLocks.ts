@@ -1,18 +1,18 @@
 import { API_URL } from '@/actions/config'
 import 'server-only'
-import { StateType, KeyType } from '@/types/state.type'
-import { mockKeys } from '@/data/mockdata'
+import { StateType, KeyType, LockType } from '@/types/state.type'
+import { mockLocks } from '@/data/mockdata'
 
-export const fetchKeys = async (): Promise<StateType<KeyType[]>> => {
-  return new Promise(async (resolve, reject) => {
+export const fetchLocks = async (): Promise<StateType<LockType[]>> => {
+  return new Promise(async (resolve) => {
     setTimeout(() => resolve({
       status: 'success',
-      data: mockKeys
+      data: mockLocks
     }), 400)
   })
 
   try {
-    const response = await fetch(`${API_URL}/keys`, {
+    const response = await fetch(`${API_URL}/locks`, {
       method: 'GET',
       cache: 'no-store',
     })
@@ -24,11 +24,11 @@ export const fetchKeys = async (): Promise<StateType<KeyType[]>> => {
       }
     }
 
-    const keys: KeyType[] = await response.json()
+    const locks: LockType[] = await response.json()
 
     return {
       status: 'success',
-      data: keys,
+      data: locks,
     }
   } catch (error) {
     return {

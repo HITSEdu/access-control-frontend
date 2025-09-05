@@ -66,7 +66,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
     <body
-      className={`${geistSans.variable} antialiased`}
+      className={`${geistSans.variable} antialiased pb-4`}
     >
     <ThemeProvider
       attribute="class"

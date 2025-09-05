@@ -32,7 +32,8 @@ export function middleware(request: NextRequest) {
     pathname.includes('.ico') ||
     pathname.includes('.css') ||
     pathname.includes('.js') ||
-    pathname.includes('.ts')
+    pathname.includes('.ts') ||
+    pathname.includes('.webmanifest')
   ) {
     return
   }

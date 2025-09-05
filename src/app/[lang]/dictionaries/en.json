@@ -35,7 +35,9 @@
     "delete": "Delete",
     "deleting": "Deleting...",
     "copied": "Copied!",
-    "copyError": "Copy Error!"
+    "copyError": "Copy Error!",
+    "detachFromLock": "Detach from lock",
+    "detachInfo": "Function is not implemented yet"
 
   },
   "HistoryPage": {

@@ -1,17 +1,13 @@
 import { API_URL } from '@/actions/config'
 import 'server-only'
 import { StateType, HistoryType } from '@/types/state.type'
+import { mockHistory } from '@/data/mockdata'
 
 export const fetchHistory = async (): Promise<StateType<HistoryType[]>> => {
   return new Promise(async (resolve, reject) => {
     setTimeout(() => resolve({
       status: 'success',
-      data: [{
-        id: 123,
-        status: 'success',
-        lock_id: '21s',
-        key_id: '2341'
-      }]
+      data: mockHistory
     }), 400)
   })
 

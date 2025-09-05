@@ -18,6 +18,7 @@ export default async function KeyList({ dict }: any) {
     <div className="flex flex-col gap-2 max-w-md">
       {data.map((key: KeyType) => (
         <KeyItem
+          mode='list'
           key={key.id}
           item={key}
           dict={dict}
